@@ -15,30 +15,6 @@ if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
 }
 
-# Check for Profile Updates
-function Update-Profile {
-    if (-not $global:canConnectToGitHub) {
-        Write-Host "Skipping profile update check due to GitHub.com not responding within 1 second." -ForegroundColor Yellow
-        return
-    }
-
-    try {
-        $url = "https://raw.githubusercontent.com/ChrisTitusTech/powershell-profile/main/Microsoft.PowerShell_profile.ps1"
-        $oldhash = Get-FileHash $PROFILE
-        Invoke-RestMethod $url -OutFile "$env:temp/Microsoft.PowerShell_profile.ps1"
-        $newhash = Get-FileHash "$env:temp/Microsoft.PowerShell_profile.ps1"
-        if ($newhash.Hash -ne $oldhash.Hash) {
-            Copy-Item -Path "$env:temp/Microsoft.PowerShell_profile.ps1" -Destination $PROFILE -Force
-            Write-Host "Profile has been updated. Please restart your shell to reflect changes" -ForegroundColor Magenta
-        }
-    } catch {
-        Write-Error "Unable to check for `$profile updates"
-    } finally {
-        Remove-Item "$env:temp/Microsoft.PowerShell_profile.ps1" -ErrorAction SilentlyContinue
-    }
-}
-Update-Profile
-
 function Update-PowerShell {
     if (-not $global:canConnectToGitHub) {
         Write-Host "Skipping PowerShell update check due to GitHub.com not responding within 1 second." -ForegroundColor Yellow
@@ -69,8 +45,7 @@ function Update-PowerShell {
 }
 Update-PowerShell
 
-Write-Host "Hello Dave, would you like to play a game?" -ForegroundColor Cyan
-
+Write-Host "Hello Dave, would you like to play a game" -ForegroundColor Cyan
 
 # Admin Check and Prompt Customization
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -99,7 +74,7 @@ $EDITOR = if (Test-CommandExists nvim) { 'nvim' }
 Set-Alias -Name vim -Value $EDITOR
 
 function Edit-Profile {
-    vim $PROFILE.CurrentUserAllHosts
+    code $PROFILE.CurrentUserAllHosts
 }
 function touch($file) { "" | Out-File $file -Encoding ASCII }
 function ff($name) {
@@ -208,6 +183,26 @@ function mkcd { param($dir) mkdir $dir -Force; Set-Location $dir }
 function docs { Set-Location -Path $HOME\Documents }
 
 function dtop { Set-Location -Path $HOME\Desktop }
+
+# Function to change to the C: drive
+function go-home {
+    Set-Location C:\
+}
+
+# Function to change to the C:\Work directory
+function go-work {
+    Set-Location C:\Work
+}
+
+# Function to change to the C:\Users\an4rc\Documents\Powershell directory
+function go-profile {
+    Set-Location C:\Users\an4rc\Documents\Powershell
+}
+
+# Creating aliases
+Set-Alias -Name home go-home
+Set-Alias -Name work go-work
+Set-Alias -Name profile go-profile
 
 # Quick Access to Editing the Profile
 function ep { vim $PROFILE }
