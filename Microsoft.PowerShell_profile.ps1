@@ -69,7 +69,7 @@ function Update-PowerShell {
 }
 Update-PowerShell
 
-Write-Host "Heelo Dave, would you like to play a game?" -ForegroundColor Cyan
+Write-Host "Hello Dave, would you like to play a game?" -ForegroundColor Cyan
 
 
 # Admin Check and Prompt Customization
