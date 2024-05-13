@@ -199,10 +199,15 @@ function go-profile {
     Set-Location C:\Users\an4rc\Documents\Powershell
 }
 
+function Open-profile {
+    code 'C:\Users\an4rc\Documents\Powershell\Microsoft.PowerShell_profile.ps1'
+}
+
 # Creating aliases
 Set-Alias -Name home go-home
 Set-Alias -Name work go-work
 Set-Alias -Name profile go-profile
+Set-Alias -Name openProfile open-profile
 
 # Quick Access to Editing the Profile
 function ep { vim $PROFILE }
