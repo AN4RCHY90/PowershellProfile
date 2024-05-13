@@ -69,6 +69,8 @@ function Update-PowerShell {
 }
 Update-PowerShell
 
+Write-Host "Heelo Dave, would you like to play a game?" -ForegroundColor Cyan
+
 
 # Admin Check and Prompt Customization
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
