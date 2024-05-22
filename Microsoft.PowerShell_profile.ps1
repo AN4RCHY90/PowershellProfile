@@ -297,6 +297,30 @@ function open-spotify {
 # Alias for opening Spotify
 Set-Alias -Name spotify -Value open-spotify
 
+# Function to open Brave browser
+function open-brave {
+    Start-Process "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
+}
+
+# Alias for opening Brave browser
+Set-Alias -Name brave -Value open-brave
+
+# Function to open the README file
+function open-readme {
+    code "$PWD\README.md"
+}
+
+# Alias for opening the README file
+Set-Alias -Name readme -Value open-readme
+
+# Function to open Windows Explorer in the current directory
+function open-here {
+    Invoke-Item -Path $PWD
+}
+
+# Alias for opening Windows Explorer in the current directory
+Set-Alias -Name open-here -Value open-here
+
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {

@@ -88,6 +88,9 @@ This README provides an overview of the custom aliases and functions defined in 
 | Alias    | Command          | Description                      |
 | -------- | ---------------- | -------------------------------- |
 | `spotify`| `open-spotify`   | Open the Spotify application     |
+| `brave`  | `open-brave`     | Open the Brave browser           |
+| `readme` | `open-readme`    | Open the README file             |
+| `open-here`| `open-here`    | Open Windows Explorer in the current directory |
 
 ### Example Usage
 
@@ -109,3 +112,12 @@ lazyg "Implemented new feature"
 
 # Open Spotify
 spotify
+
+# Open Brave browser
+brave
+
+# Open the README file
+readme
+
+# Open Windows Explorer in the current directory
+open-here
