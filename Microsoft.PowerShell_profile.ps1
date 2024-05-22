@@ -307,11 +307,16 @@ Set-Alias -Name brave -Value open-brave
 
 # Function to open Signal Messenger and suppress output
 function open-signal {
-    Start-Process "C:\Users\an4rc\AppData\Local\Programs\signal-desktop\Signal.exe" -NoNewWindow -RedirectStandardOutput $null -RedirectStandardError $null
+    $outputFile = [System.IO.Path]::GetTempFileName()
+    $errorFile = [System.IO.Path]::GetTempFileName()
+    Start-Process "C:\Users\an4rc\AppData\Local\Programs\signal-desktop\Signal.exe" -NoNewWindow -RedirectStandardOutput $outputFile -RedirectStandardError $errorFile
+    Start-Sleep -Seconds 2
+    Remove-Item $outputFile, $errorFile -Force
 }
 
 # Alias for opening Signal Messenger
 Set-Alias -Name signal -Value open-signal
+
 
 # Function to open KeePassXC
 function open-keepassxc {
