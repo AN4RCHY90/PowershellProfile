@@ -314,12 +314,12 @@ function open-readme {
 Set-Alias -Name readme -Value open-readme
 
 # Function to open Windows Explorer in the current directory
-function open-here {
-    Start-Process explorer.exe $PWD
+function openExplorerHere {
+    Start-Process explorer.exe -ArgumentList $PWD
 }
 
 # Alias for opening Windows Explorer in the current directory
-Set-Alias -Name open-here -Value open-here
+Set-Alias -Name open-here -Value openExplorerHere
 
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression
