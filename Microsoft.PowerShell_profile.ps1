@@ -96,6 +96,7 @@ function uptime {
 }
 
 function reload-profile {
+    Clear-Host
     & $profile
 }
 
@@ -199,6 +200,11 @@ function go-profile {
     Set-Location C:\Users\an4rc\Documents\Powershell
 }
 
+# Function to change to the C:\Users\Work\OneDrive - Commtel Ltd T A Telguard\Documents\PowerShell directory
+function go-work-profile {
+    Set-Location 'C:\Users\Work\OneDrive - Commtel Ltd T A Telguard\Documents\PowerShell'
+}
+
 function Open-profile {
     code 'C:\Users\an4rc\Documents\Powershell\Microsoft.PowerShell_profile.ps1'
 }
@@ -207,6 +213,8 @@ function Open-profile {
 Set-Alias -Name home go-home
 Set-Alias -Name work go-work
 Set-Alias -Name profile go-profile
+Set-Alias -Name work-Profile go-work-profile
+Set-Alias -Name home-Profile go-profile
 Set-Alias -Name openProfile open-profile
 
 # Quick Access to Editing the Profile
