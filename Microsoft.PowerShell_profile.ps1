@@ -230,22 +230,45 @@ function ll { Get-ChildItem -Path . -Force -Hidden | Format-Table -AutoSize }
 # Git Shortcuts
 function gs { git status }
 
-function ga { git add . }
+function ga {
+    param(
+        [string]$file = ""
+    )
+    if ($file -eq "") {
+        git add .
+    } else {
+        git add $file
+    }
+}
 
-function gc { param($m) git commit -m "$m" }
+function gc {
+    param(
+        [string]$m
+    )
+    git commit -m "$m"
+}
 
-function gp { git push }
+function gp {
+    git push origin master
+}
 
 function g { z Github }
 
 function gcom {
+    param(
+        [string]$m
+    )
     git add .
-    git commit -m "$args"
+    git commit -m "$m"
 }
+
 function lazyg {
+    param(
+        [string]$m
+    )
     git add .
-    git commit -m "$args"
-    git push
+    git commit -m "$m"
+    git push origin master
 }
 
 # Quick Access to System Information
