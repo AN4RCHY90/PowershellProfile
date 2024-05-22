@@ -11,6 +11,7 @@ This README provides an overview of the custom aliases and functions defined in 
 - [Networking Utilities](#networking-utilities)
 - [Clipboard Utilities](#clipboard-utilities)
 - [Enhanced PowerShell Experience](#enhanced-powershell-experience)
+- [Application Shortcuts](#application-shortcuts)
 
 ## Navigation Shortcuts
 
@@ -33,7 +34,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | `gs`      | `git status`                   | Show the status of the Git repository                                       |
 | `ga`      | `ga [file]`                    | Add a specific file or all files to the staging area                        |
 | `gc`      | `gc "commit message"`          | Commit changes with a message                                               |
-| `gp`      | `gp`                           | Push changes to the `origin` remote and the `master` branch                 |
+| `gp`      | `git push origin master`       | Push changes to the `origin` remote and the `master` branch                 |
 | `gcom`    | `gcom "commit message"`        | Add all files, commit with a message, but do not push                       |
 | `lazyg`   | `lazyg "commit message"`       | Add all files, commit with a message, and push to `origin master`           |
 
@@ -82,6 +83,12 @@ This README provides an overview of the custom aliases and functions defined in 
 | ------- | ---------------------------------------- |
 | `Set-PSReadLineOption -Colors @{ ... }` | Set custom colors for the PowerShell prompt |
 
+## Application Shortcuts
+
+| Alias    | Command          | Description                      |
+| -------- | ---------------- | -------------------------------- |
+| `spotify`| `open-spotify`   | Open the Spotify application     |
+
 ### Example Usage
 
 ```powershell
@@ -99,3 +106,6 @@ gp
 
 # Combined add, commit, and push operation
 lazyg "Implemented new feature"
+
+# Open Spotify
+spotify
