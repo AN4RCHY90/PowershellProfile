@@ -307,7 +307,7 @@ Set-Alias -Name brave -Value open-brave
 
 # Function to open the README file
 function open-readme {
-    code "$PWD\README.md"
+    code 'C:\Users\an4rc\Documents\Powershell\readme.md'
 }
 
 # Alias for opening the README file
