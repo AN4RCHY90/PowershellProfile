@@ -315,7 +315,7 @@ Set-Alias -Name readme -Value open-readme
 
 # Function to open Windows Explorer in the current directory
 function open-here {
-    Invoke-Item -Path $PWD
+    Start-Process explorer.exe $PWD
 }
 
 # Alias for opening Windows Explorer in the current directory
