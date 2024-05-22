@@ -89,8 +89,11 @@ This README provides an overview of the custom aliases and functions defined in 
 | -------- | ---------------- | -------------------------------- |
 | `spotify`| `open-spotify`   | Open the Spotify application     |
 | `brave`  | `open-brave`     | Open the Brave browser           |
+| `signal` | `open-signal`    | Open the Signal Messenger app    |
+| `keepassxc` | `open-keepassxc` | Open KeePassXC                 |
 | `readme` | `Show-Readme`    | Display the README file contents |
 | `open-here`| `open-here`    | Open Windows Explorer in the current directory |
+| `explorer` | `open-explorer` | Open Windows Explorer at the C:\ directory |
 
 ### Example Usage
 
@@ -116,8 +119,17 @@ spotify
 # Open Brave browser
 brave
 
+# Open Signal Messenger
+signal
+
+# Open KeePassXC
+keepassxc
+
 # Display the README file contents
 readme
 
 # Open Windows Explorer in the current directory
 open-here
+
+# Open Windows Explorer at the C:\ directory
+explorer

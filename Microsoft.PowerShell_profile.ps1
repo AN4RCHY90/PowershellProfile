@@ -305,6 +305,22 @@ function open-brave {
 # Alias for opening Brave browser
 Set-Alias -Name brave -Value open-brave
 
+# Function to open Signal Messenger and suppress output
+function open-signal {
+    Start-Process "C:\Users\an4rc\AppData\Local\Programs\signal-desktop\Signal.exe" -NoNewWindow -RedirectStandardOutput $null -RedirectStandardError $null
+}
+
+# Alias for opening Signal Messenger
+Set-Alias -Name signal -Value open-signal
+
+# Function to open KeePassXC
+function open-keepassxc {
+    Start-Process "C:\Program Files\KeePassXC\KeePassXC.exe"
+}
+
+# Alias for opening KeePassXC
+Set-Alias -Name keepassxc -Value open-keepassxc
+
 # Function to open the README file
 function Show-Readme {
     $readmePath = 'C:\Users\an4rc\Documents\Powershell\readme.md'
@@ -325,6 +341,14 @@ function openExplorerHere {
 
 # Alias for opening Windows Explorer in the current directory
 Set-Alias -Name open-here -Value openExplorerHere
+
+# Function to open Windows Explorer at the C:\ directory
+function open-explorer {
+    Start-Process explorer.exe "C:\"
+}
+
+# Alias for opening Windows Explorer at the C:\ directory
+Set-Alias -Name explorer -Value open-explorer
 
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression
