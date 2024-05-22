@@ -306,12 +306,17 @@ function open-brave {
 Set-Alias -Name brave -Value open-brave
 
 # Function to open the README file
-function open-readme {
-    code 'C:\Users\an4rc\Documents\Powershell\readme.md'
+function Show-Readme {
+    $readmePath = 'C:\Users\an4rc\Documents\Powershell\readme.md'
+    if (Test-Path $readmePath) {
+        Get-Content $readmePath | Out-Host
+    } else {
+        Write-Host "README file not found at path: $readmePath" -ForegroundColor Red
+    }
 }
 
-# Alias for opening the README file
-Set-Alias -Name readme -Value open-readme
+# Alias for displaying the README file contents
+Set-Alias -Name readme -Value Show-Readme
 
 # Function to open Windows Explorer in the current directory
 function openExplorerHere {

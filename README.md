@@ -89,7 +89,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | -------- | ---------------- | -------------------------------- |
 | `spotify`| `open-spotify`   | Open the Spotify application     |
 | `brave`  | `open-brave`     | Open the Brave browser           |
-| `readme` | `open-readme`    | Open the README file             |
+| `readme` | `Show-Readme`    | Display the README file contents |
 | `open-here`| `open-here`    | Open Windows Explorer in the current directory |
 
 ### Example Usage
@@ -116,7 +116,7 @@ spotify
 # Open Brave browser
 brave
 
-# Open the README file
+# Display the README file contents
 readme
 
 # Open Windows Explorer in the current directory
