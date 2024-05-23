@@ -26,6 +26,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | `dtop`        | `dtop`                | Change to the Desktop directory                     |
 | `openProfile` | `open-profile`        | Open the PowerShell profile in VS Code              |
 | `ep`          | `vim $PROFILE`        | Edit the PowerShell profile with Vim                |
+| `openReadme`  | `open-readme`         | Open the README file in VSCode                      |
 
 ## Git Shortcuts
 
@@ -92,7 +93,6 @@ This README provides an overview of the custom aliases and functions defined in 
 | `signal` | `open-signal`    | Open the Signal Messenger app    |
 | `keepassxc` | `open-keepassxc` | Open KeePassXC                 |
 | `readme` | `Show-Readme`    | Display the README file contents |
-| `openReadme`| `open-readme` | Open the README file in VSCode   |
 | `open-here`| `open-here`    | Open Windows Explorer in the current directory |
 | `explorer` | `open-explorer` | Open Windows Explorer at the C:\ directory |
 | `battlenet`| `open-battlenet` | Open Battle.net Launcher       |
@@ -101,6 +101,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | `ubisoft` | `open-ubisoft`  | Open Ubisoft Connect             |
 | `ea`      | `open-ea`       | Open EA app                      |
 | `epic`    | `open-epic`     | Open Epic Games Launcher         |
+| `discord` | `open-discord`  | Open Discord                     |
 
 ### Example Usage
 
@@ -161,3 +162,6 @@ ea
 
 # Open Epic Games Launcher
 epic
+
+# Open Discord
+discord

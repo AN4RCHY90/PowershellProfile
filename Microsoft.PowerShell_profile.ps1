@@ -359,7 +359,7 @@ Set-Alias -Name ubisoft -Value open-ubisoft
 
 # Function to open EA app
 function open-ea {
-    Start-Process "C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe"
+    Start-Process "C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EA Desktop.exe"
 }
 
 # Alias for opening EA app
@@ -372,6 +372,14 @@ function open-epic {
 
 # Alias for opening Epic Games Launcher
 Set-Alias -Name epic -Value open-epic
+
+# Function to open Discord
+function open-discord {
+    Start-Process "C:\Users\an4rc\AppData\Local\Discord\Update.exe"
+}
+
+# Alias for opening Discord
+Set-Alias -Name discord -Value open-discord
 
 # Function to open the README file in VSCode
 function open-readme {
