@@ -359,7 +359,7 @@ Set-Alias -Name ubisoft -Value open-ubisoft
 
 # Function to open EA app
 function open-ea {
-    Start-Process "C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EA Desktop.exe"
+    Start-Process "C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EALauncher.exe"
 }
 
 # Alias for opening EA app
