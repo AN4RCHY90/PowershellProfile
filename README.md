@@ -92,8 +92,15 @@ This README provides an overview of the custom aliases and functions defined in 
 | `signal` | `open-signal`    | Open the Signal Messenger app    |
 | `keepassxc` | `open-keepassxc` | Open KeePassXC                 |
 | `readme` | `Show-Readme`    | Display the README file contents |
+| `openReadme`| `open-readme` | Open the README file in VSCode   |
 | `open-here`| `open-here`    | Open Windows Explorer in the current directory |
 | `explorer` | `open-explorer` | Open Windows Explorer at the C:\ directory |
+| `battlenet`| `open-battlenet` | Open Battle.net Launcher       |
+| `gog`     | `open-gog`      | Open GOG Galaxy Launcher         |
+| `steam`   | `open-steam`    | Open Steam                       |
+| `ubisoft` | `open-ubisoft`  | Open Ubisoft Connect             |
+| `ea`      | `open-ea`       | Open EA app                      |
+| `epic`    | `open-epic`     | Open Epic Games Launcher         |
 
 ### Example Usage
 
@@ -128,8 +135,29 @@ keepassxc
 # Display the README file contents
 readme
 
+# Open the README file in VSCode
+openReadme
+
 # Open Windows Explorer in the current directory
 open-here
 
 # Open Windows Explorer at the C:\ directory
 explorer
+
+# Open Battle.net Launcher
+battlenet
+
+# Open GOG Galaxy Launcher
+gog
+
+# Open Steam
+steam
+
+# Open Ubisoft Connect
+ubisoft
+
+# Open EA app
+ea
+
+# Open Epic Games Launcher
+epic

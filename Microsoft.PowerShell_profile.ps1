@@ -317,7 +317,6 @@ function open-signal {
 # Alias for opening Signal Messenger
 Set-Alias -Name signal -Value open-signal
 
-
 # Function to open KeePassXC
 function open-keepassxc {
     Start-Process "C:\Program Files\KeePassXC\KeePassXC.exe"
@@ -325,6 +324,62 @@ function open-keepassxc {
 
 # Alias for opening KeePassXC
 Set-Alias -Name keepassxc -Value open-keepassxc
+
+# Function to open Battle.net
+function open-battlenet {
+    Start-Process "C:\Program Files (x86)\Battle.net\Battle.net Launcher.exe"
+}
+
+# Alias for opening Battle.net
+Set-Alias -Name battlenet -Value open-battlenet
+
+# Function to open GOG Galaxy
+function open-gog {
+    Start-Process "C:\Program Files (x86)\GOG Galaxy\GalaxyClient.exe"
+}
+
+# Alias for opening GOG Galaxy
+Set-Alias -Name gog -Value open-gog
+
+# Function to open Steam
+function open-steam {
+    Start-Process "C:\Program Files (x86)\Steam\Steam.exe"
+}
+
+# Alias for opening Steam
+Set-Alias -Name steam -Value open-steam
+
+# Function to open Ubisoft Connect
+function open-ubisoft {
+    Start-Process "C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\UbisoftConnect.exe"
+}
+
+# Alias for opening Ubisoft Connect
+Set-Alias -Name ubisoft -Value open-ubisoft
+
+# Function to open EA app
+function open-ea {
+    Start-Process "C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EA Desktop.exe"
+}
+
+# Alias for opening EA app
+Set-Alias -Name ea -Value open-ea
+
+# Function to open Epic Games Launcher
+function open-epic {
+    Start-Process "C:\Program Files (x86)\Epic Games\Launcher\Portal\Binaries\Win32\EpicGamesLauncher.exe"
+}
+
+# Alias for opening Epic Games Launcher
+Set-Alias -Name epic -Value open-epic
+
+# Function to open the README file in VSCode
+function open-readme {
+    code 'C:\Users\an4rc\Documents\Powershell\readme.md'
+}
+
+# Alias for opening the README file in VSCode
+Set-Alias -Name openReadme -Value open-readme
 
 # Function to open the README file
 function Show-Readme {
