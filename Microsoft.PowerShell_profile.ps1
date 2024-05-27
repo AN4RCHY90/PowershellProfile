@@ -181,9 +181,9 @@ function mkcd { param($dir) mkdir $dir -Force; Set-Location $dir }
 ### Quality of Life Aliases
 
 # Navigation Shortcuts
-function docs { Set-Location -Path $HOME\Documents }
+function docs { Set-Location -Path "$env:USERPROFILE\Documents" }
 
-function dtop { Set-Location -Path $HOME\Desktop }
+function dtop { Set-Location -Path "$env:USERPROFILE\Desktop" }
 
 # Function to change to the C: drive
 function go-home {
@@ -195,18 +195,18 @@ function go-work {
     Set-Location C:\Work
 }
 
-# Function to change to the C:\Users\an4rc\Documents\Powershell directory
+# Function to change to the user's Documents\Powershell directory
 function go-profile {
-    Set-Location C:\Users\an4rc\Documents\Powershell
+    Set-Location "$env:USERPROFILE\Documents\Powershell"
 }
 
-# Function to change to the C:\Users\Work\OneDrive - Commtel Ltd T A Telguard\Documents\PowerShell directory
+# Function to change to the user's Work OneDrive PowerShell directory
 function go-work-profile {
-    Set-Location 'C:\Users\Work\OneDrive - Commtel Ltd T A Telguard\Documents\PowerShell'
+    Set-Location "$env:USERPROFILE\OneDrive - Commtel Ltd T A Telguard\Documents\PowerShell"
 }
 
 function Open-profile {
-    code 'C:\Users\an4rc\Documents\Powershell\Microsoft.PowerShell_profile.ps1'
+    code "$env:USERPROFILE\Documents\Powershell\Microsoft.PowerShell_profile.ps1"
 }
 
 # Creating aliases
@@ -375,7 +375,7 @@ Set-Alias -Name epic -Value open-epic
 
 # Function to open Discord
 function open-discord {
-    Start-Process "C:\Users\an4rc\AppData\Local\Discord\Update.exe"
+    Start-Process "C:\ProgramData\SquirrelMachineInstalls\Discord.exe"
 }
 
 # Alias for opening Discord
@@ -383,7 +383,7 @@ Set-Alias -Name discord -Value open-discord
 
 # Function to open the README file in VSCode
 function open-readme {
-    code 'C:\Users\an4rc\Documents\Powershell\readme.md'
+    code "$env:USERPROFILE\Documents\Powershell\readme.md"
 }
 
 # Alias for opening the README file in VSCode
@@ -391,7 +391,7 @@ Set-Alias -Name openReadme -Value open-readme
 
 # Function to open the README file
 function Show-Readme {
-    $readmePath = 'C:\Users\an4rc\Documents\Powershell\readme.md'
+    $readmePath = "$env:USERPROFILE\Documents\Powershell\readme.md"
     if (Test-Path $readmePath) {
         Get-Content $readmePath | Out-Host
     } else {
@@ -417,6 +417,14 @@ function open-explorer {
 
 # Alias for opening Windows Explorer at the C:\ directory
 Set-Alias -Name explorer -Value open-explorer
+
+# Function to open Turtl
+function open-turtl {
+    Start-Process "C:\Program Files\Turtl\turtl.exe"
+}
+
+# Alias for opening Turtl
+Set-Alias -Name turtl -Value open-turtl
 
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression

@@ -19,8 +19,8 @@ This README provides an overview of the custom aliases and functions defined in 
 | ------------- | --------------------- | --------------------------------------------------- |
 | `home`        | `go-home`             | Change to the C: drive                              |
 | `work`        | `go-work`             | Change to the C:\Work directory                     |
-| `profile`     | `go-profile`          | Change to the C:\Users\an4rc\Documents\Powershell   |
-| `work-Profile`| `go-work-profile`     | Change to the work profile directory                |
+| `profile`     | `go-profile`          | Change to the user's Documents\Powershell directory |
+| `work-Profile`| `go-work-profile`     | Change to the user's Work OneDrive PowerShell directory |
 | `home-Profile`| `go-profile`          | Alias for `profile`                                 |
 | `docs`        | `docs`                | Change to the Documents directory                   |
 | `dtop`        | `dtop`                | Change to the Desktop directory                     |
@@ -93,6 +93,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | `signal` | `open-signal`    | Open the Signal Messenger app    |
 | `keepassxc` | `open-keepassxc` | Open KeePassXC                 |
 | `readme` | `Show-Readme`    | Display the README file contents |
+| `openReadme`| `open-readme` | Open the README file in VSCode   |
 | `open-here`| `open-here`    | Open Windows Explorer in the current directory |
 | `explorer` | `open-explorer` | Open Windows Explorer at the C:\ directory |
 | `battlenet`| `open-battlenet` | Open Battle.net Launcher       |
@@ -102,66 +103,4 @@ This README provides an overview of the custom aliases and functions defined in 
 | `ea`      | `open-ea`       | Open EA app                      |
 | `epic`    | `open-epic`     | Open Epic Games Launcher         |
 | `discord` | `open-discord`  | Open Discord                     |
-
-### Example Usage
-
-```powershell
-# Navigate to the work profile directory
-work-Profile
-
-# Add a specific file to the staging area
-ga path/to/your/file
-
-# Commit changes with a message
-gc "Fixed a bug in the script"
-
-# Push changes to the origin master branch
-gp
-
-# Combined add, commit, and push operation
-lazyg "Implemented new feature"
-
-# Open Spotify
-spotify
-
-# Open Brave browser
-brave
-
-# Open Signal Messenger
-signal
-
-# Open KeePassXC
-keepassxc
-
-# Display the README file contents
-readme
-
-# Open the README file in VSCode
-openReadme
-
-# Open Windows Explorer in the current directory
-open-here
-
-# Open Windows Explorer at the C:\ directory
-explorer
-
-# Open Battle.net Launcher
-battlenet
-
-# Open GOG Galaxy Launcher
-gog
-
-# Open Steam
-steam
-
-# Open Ubisoft Connect
-ubisoft
-
-# Open EA app
-ea
-
-# Open Epic Games Launcher
-epic
-
-# Open Discord
-discord
+| `turtl`   | `open-turtl`    | Open Turtl                       |
