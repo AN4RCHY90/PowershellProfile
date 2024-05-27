@@ -45,7 +45,7 @@ function Update-PowerShell {
 }
 Update-PowerShell
 
-Write-Host "Hello Dave, would you like to play a game" -ForegroundColor Cyan
+Write-Host "Hello Dave, would you like to play a game" -ForegroundColor Red
 
 # Admin Check and Prompt Customization
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -309,7 +309,7 @@ Set-Alias -Name brave -Value open-brave
 function open-signal {
     $outputFile = [System.IO.Path]::GetTempFileName()
     $errorFile = [System.IO.Path]::GetTempFileName()
-    Start-Process "C:\Users\an4rc\AppData\Local\Programs\signal-desktop\Signal.exe" -NoNewWindow -RedirectStandardOutput $outputFile -RedirectStandardError $errorFile
+    Start-Process "C:\Users\$env:USERNAME\AppData\Local\Programs\signal-desktop\Signal.exe" -NoNewWindow -RedirectStandardOutput $outputFile -RedirectStandardError $errorFile
     Start-Sleep -Seconds 2
     Remove-Item $outputFile, $errorFile -Force
 }
@@ -425,6 +425,64 @@ function open-turtl {
 
 # Alias for opening Turtl
 Set-Alias -Name turtl -Value open-turtl
+
+# Function to open Parsec
+function open-parsec {
+    Start-Process "C:\Program Files\Parsec\parsecd.exe"
+}
+
+# Alias for opening Parsec
+Set-Alias -Name parsec -Value open-parsec
+
+# Function to run DISM
+function run-dism {
+    Start-Process "dism.exe" "/online /cleanup-image /restorehealth" -NoNewWindow -Wait
+}
+
+# Alias for running DISM
+Set-Alias -Name dism -Value run-dism
+
+# Function to run SFC
+function run-sfc {
+    Start-Process "sfc.exe" "/scannow" -NoNewWindow -Wait
+}
+
+# Alias for running SFC
+Set-Alias -Name sfc -Value run-sfc
+
+# Function to run CHKDSK
+function run-chkdsk {
+    Start-Process "chkdsk.exe" "/f /r" -NoNewWindow -Wait
+}
+
+# Alias for running CHKDSK
+Set-Alias -Name chkdsk -Value run-chkdsk
+
+# Function to run Disk Cleanup
+function run-cleanmgr {
+    Start-Process "cleanmgr.exe"
+}
+
+# Alias for running Disk Cleanup
+Set-Alias -Name cleanmgr -Value run-cleanmgr
+
+# Function to check for Windows Updates
+function run-windowsupdate {
+    Start-Process "powershell.exe" "-Command Get-WindowsUpdate -Install -AcceptAll -AutoReboot"
+}
+
+# Alias for checking Windows Updates
+Set-Alias -Name windowsupdate -Value run-windowsupdate
+
+# Function to sign out the current user and shut down the PC
+function signout-shutdown {
+    shutdown.exe /l
+    Start-Sleep -Seconds 5
+    shutdown.exe /s /t 0
+}
+
+# Alias for signing out and shutting down
+Set-Alias -Name signoutshutdown -Value signout-shutdown
 
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression

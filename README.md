@@ -12,6 +12,7 @@ This README provides an overview of the custom aliases and functions defined in 
 - [Clipboard Utilities](#clipboard-utilities)
 - [Enhanced PowerShell Experience](#enhanced-powershell-experience)
 - [Application Shortcuts](#application-shortcuts)
+- [System Maintenance](#system-maintenance)
 
 ## Navigation Shortcuts
 
@@ -104,3 +105,15 @@ This README provides an overview of the custom aliases and functions defined in 
 | `epic`    | `open-epic`     | Open Epic Games Launcher         |
 | `discord` | `open-discord`  | Open Discord                     |
 | `turtl`   | `open-turtl`    | Open Turtl                       |
+| `parsec`  | `open-parsec`   | Open Parsec                      |
+
+## System Maintenance
+
+| Alias       | Command                 | Description                                  |
+| ----------- | ----------------------- | -------------------------------------------- |
+| `dism`      | `run-dism`              | Run DISM to restore health of the image      |
+| `sfc`       | `run-sfc`               | Run SFC to scan and repair system files      |
+| `chkdsk`    | `run-chkdsk`            | Run CHKDSK to check the disk for errors      |
+| `cleanmgr`  | `run-cleanmgr`          | Run Disk Cleanup utility                     |
+| `windowsupdate`| `run-windowsupdate`  | Check for Windows updates                    |
+| `signoutshutdown` | `signout-shutdown` | Sign out the current user and shut down the PC |
