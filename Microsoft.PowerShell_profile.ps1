@@ -271,6 +271,15 @@ function lazyg {
     git push origin master
 }
 
+# Function to reset the local repository to match the remote repository
+function git-reset {
+    git fetch origin
+    git reset --hard origin/master
+}
+
+# Alias for the git-reset function
+Set-Alias -Name gitreset -Value git-reset
+
 # Quick Access to System Information
 function sysinfo { Get-ComputerInfo }
 
@@ -483,9 +492,11 @@ Set-Alias -Name windowsupdate -Value run-windowsupdate
 
 # Function to sign out the current user and shut down the PC
 function signout-shutdown {
+    # Schedule shutdown task to run in 1 minute
+    schtasks /create /tn "ShutdownPC" /tr "shutdown.exe /s /f /t 0" /sc once /st $(Get-Date).AddMinutes(1).ToString("HH:mm")
+
+    # Log off the current user
     shutdown.exe /l
-    Start-Sleep -Seconds 5
-    shutdown.exe /s /t 0
 }
 
 # Alias for signing out and shutting down

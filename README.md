@@ -39,6 +39,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | `gp`      | `git push origin master`       | Push changes to the `origin` remote and the `master` branch                 |
 | `gcom`    | `gcom "commit message"`        | Add all files, commit with a message, but do not push                       |
 | `lazyg`   | `lazyg "commit message"`       | Add all files, commit with a message, and push to `origin master`           |
+| `gitreset`| `git-reset`                    | Reset the local repository to match the remote repository                   |
 
 ## System Utilities
 
