@@ -452,7 +452,14 @@ Set-Alias -Name sfc -Value run-sfc
 
 # Function to run CHKDSK
 function run-chkdsk {
-    Start-Process "chkdsk.exe" "/f /r" -NoNewWindow -Wait
+    $drive = "C:"
+    $message = "chkdsk cannot run because the volume is in use by another process. Would you like to schedule this volume to be checked the next time the system restarts? (Y/N)"
+    $scheduleChkDsk = Read-Host "$message"
+    if ($scheduleChkDsk -match '^[Yy]$') {
+        Start-Process "chkdsk.exe" "$drive /f /r" -NoNewWindow -Wait
+    } else {
+        Write-Host "Cancelled CHKDSK scheduling."
+    }
 }
 
 # Alias for running CHKDSK
