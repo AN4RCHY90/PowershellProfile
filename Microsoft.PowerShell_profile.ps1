@@ -319,7 +319,16 @@ function open-signal {
     $outputFile = [System.IO.Path]::GetTempFileName()
     $errorFile = [System.IO.Path]::GetTempFileName()
     Start-Process "C:\Users\$env:USERNAME\AppData\Local\Programs\signal-desktop\Signal.exe" -NoNewWindow -RedirectStandardOutput $outputFile -RedirectStandardError $errorFile
+
+    # Wait until the process finishes
     Start-Sleep -Seconds 2
+
+    # Check if files are in use and wait if they are
+    while (Test-Path $outputFile -and (Get-Item $outputFile).IsReadOnly -or Test-Path $errorFile -and (Get-Item $errorFile).IsReadOnly) {
+        Start-Sleep -Seconds 1
+    }
+
+    # Remove the temporary files
     Remove-Item $outputFile, $errorFile -Force
 }
 
