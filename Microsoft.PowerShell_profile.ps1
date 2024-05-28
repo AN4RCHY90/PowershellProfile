@@ -324,7 +324,7 @@ function open-signal {
     Start-Sleep -Seconds 2
 
     # Check if files are in use and wait if they are
-    while (Test-Path $outputFile -and (Get-Item $outputFile).IsReadOnly -or Test-Path $errorFile -and (Get-Item $errorFile).IsReadOnly) {
+    while (Test-Path $outputFile -and (Get-Item $outputFile).Length -eq 0 -or Test-Path $errorFile -and (Get-Item $errorFile).Length -eq 0) {
         Start-Sleep -Seconds 1
     }
 
