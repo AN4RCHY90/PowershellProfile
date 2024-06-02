@@ -322,13 +322,6 @@ function open-signal {
 
     # Wait until the process finishes
     Start-Sleep -Seconds 2
-
-    # Check if files are in use and wait if they are
-    while ((Test-Path $outputFile -and (Get-Item $outputFile).Length -eq 0) -or (Test-Path $errorFile -and (Get-Item $errorFile).Length -eq 0)) {
-        Start-Sleep -Seconds 1
-    }
-
-    # Remove the temporary files
     Remove-Item $outputFile, $errorFile -Force
 }
 
@@ -501,13 +494,6 @@ Set-Alias -Name windowsupdate -Value run-windowsupdate
 
 # Function to sign out the current user and shut down the PC
 function signout-shutdown {
-    param (
-        [int]$delayMinutes = 1
-    )
-    # Schedule shutdown task to run in the specified number of minutes
-    schtasks /create /tn "ShutdownPC" /tr "shutdown.exe /s /f /t 0" /sc once /st $(Get-Date).AddMinutes($delayMinutes).ToString("HH:mm")
-
-    # Log off the current user
     shutdown.exe /l
 }
 
