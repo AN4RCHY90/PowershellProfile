@@ -195,26 +195,39 @@ function go-work {
     Set-Location C:\Work
 }
 
-# Function to change to the user's Documents\Powershell directory
+# Determine if the user is at "home" or "work"
+function Get-ProfileType {
+    if (Test-Path "$env:USERPROFILE\OneDrive - Commtel Ltd T A Telguard\Documents\PowerShell") {
+        return "work"
+    } else {
+        return "home"
+    }
+}
+
+# Function to change to the user's profile directory
 function go-profile {
-    Set-Location "$env:USERPROFILE\Documents\Powershell"
+    $type = Get-ProfileType
+    if ($type -eq "work") {
+        Set-Location "$env:USERPROFILE\OneDrive - Commtel Ltd T A Telguard\Documents\PowerShell"
+    } else {
+        Set-Location "$env:USERPROFILE\Documents\Powershell"
+    }
 }
 
-# Function to change to the user's Work OneDrive PowerShell directory
-function go-work-profile {
-    Set-Location "$env:USERPROFILE\OneDrive - Commtel Ltd T A Telguard\Documents\PowerShell"
-}
-
+# Function to open the PowerShell profile
 function Open-profile {
-    code "$env:USERPROFILE\Documents\Powershell\Microsoft.PowerShell_profile.ps1"
+    $type = Get-ProfileType
+    if ($type -eq "work") {
+        code "$env:USERPROFILE\OneDrive - Commtel Ltd T A Telguard\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+    } else {
+        code "$env:USERPROFILE\Documents\Powershell\Microsoft.PowerShell_profile.ps1"
+    }
 }
 
 # Creating aliases
 Set-Alias -Name home go-home
 Set-Alias -Name work go-work
 Set-Alias -Name profile go-profile
-Set-Alias -Name work-Profile go-work-profile
-Set-Alias -Name home-Profile go-profile
 Set-Alias -Name openProfile open-profile
 
 # Quick Access to Editing the Profile
@@ -280,6 +293,22 @@ function git-reset {
 # Alias for the git-reset function
 Set-Alias -Name gitreset -Value git-reset
 
+# Function to update Git
+function update-git {
+    if (Get-Command choco -ErrorAction SilentlyContinue) {
+        choco upgrade git -y
+    } elseif (Get-Command scoop -ErrorAction SilentlyContinue) {
+        scoop update git
+    } elseif (Get-Command winget -ErrorAction SilentlyContinue) {
+        winget upgrade --id Git.Git --accept-package-agreements
+    } else {
+        Write-Host "No supported package manager found (choco, scoop, or winget)." -ForegroundColor Red
+    }
+}
+
+# Alias for updating Git
+Set-Alias -Name gitupdate -Value update-git
+
 # Quick Access to System Information
 function sysinfo { Get-ComputerInfo }
 
@@ -322,6 +351,13 @@ function open-signal {
 
     # Wait until the process finishes
     Start-Sleep -Seconds 2
+
+    # Check if files are in use and wait if they are
+    while ((Test-Path $outputFile -and (Get-Item $outputFile).Length -eq 0) -or (Test-Path $errorFile -and (Get-Item $errorFile).Length -eq 0)) {
+        Start-Sleep -Seconds 1
+    }
+
+    # Remove the temporary files
     Remove-Item $outputFile, $errorFile -Force
 }
 
@@ -494,27 +530,18 @@ Set-Alias -Name windowsupdate -Value run-windowsupdate
 
 # Function to sign out the current user and shut down the PC
 function signout-shutdown {
+    param (
+        [int]$delayMinutes = 1
+    )
+    # Schedule shutdown task to run in the specified number of minutes
+    schtasks /create /tn "ShutdownPC" /tr "shutdown.exe /s /f /t 0" /sc once /st $(Get-Date).AddMinutes($delayMinutes).ToString("HH:mm")
+
+    # Log off the current user
     shutdown.exe /l
 }
 
 # Alias for signing out and shutting down
 Set-Alias -Name signoutshutdown -Value signout-shutdown
-
-# Function to update Git
-function update-git {
-    if (Get-Command choco -ErrorAction SilentlyContinue) {
-        choco upgrade git -y
-    } elseif (Get-Command scoop -ErrorAction SilentlyContinue) {
-        scoop update git
-    } elseif (Get-Command winget -ErrorAction SilentlyContinue) {
-        winget upgrade --id Git.Git --accept-package-agreements
-    } else {
-        Write-Host "No supported package manager found (choco, scoop, or winget)." -ForegroundColor Red
-    }
-}
-
-# Alias for updating Git
-Set-Alias -Name gitupdate -Value update-git
 
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression

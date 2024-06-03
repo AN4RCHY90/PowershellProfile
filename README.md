@@ -20,9 +20,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | ------------- | --------------------- | --------------------------------------------------- |
 | `home`        | `go-home`             | Change to the C: drive                              |
 | `work`        | `go-work`             | Change to the C:\Work directory                     |
-| `profile`     | `go-profile`          | Change to the user's Documents\Powershell directory |
-| `work-Profile`| `go-work-profile`     | Change to the user's Work OneDrive PowerShell directory |
-| `home-Profile`| `go-profile`          | Alias for `profile`                                 |
+| `profile`     | `go-profile`          | Change to the user's profile directory              |
 | `docs`        | `docs`                | Change to the Documents directory                   |
 | `dtop`        | `dtop`                | Change to the Desktop directory                     |
 | `openProfile` | `open-profile`        | Open the PowerShell profile in VS Code              |
