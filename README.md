@@ -40,6 +40,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | `gcom`    | `gcom "commit message"`        | Add all files, commit with a message, but do not push                       |
 | `lazyg`   | `lazyg "commit message"`       | Add all files, commit with a message, and push to `origin master`           |
 | `gitreset`| `git-reset`                    | Reset the local repository to match the remote repository                   |
+| `gitupdate`| `update-git`                  | Update Git to the latest version                                            |
 
 ## System Utilities
 
@@ -95,7 +96,6 @@ This README provides an overview of the custom aliases and functions defined in 
 | `signal` | `open-signal`    | Open the Signal Messenger app    |
 | `keepassxc` | `open-keepassxc` | Open KeePassXC                 |
 | `readme` | `Show-Readme`    | Display the README file contents |
-| `openReadme`| `open-readme` | Open the README file in VSCode   |
 | `open-here`| `open-here`    | Open Windows Explorer in the current directory |
 | `explorer` | `open-explorer` | Open Windows Explorer at the C:\ directory |
 | `battlenet`| `open-battlenet` | Open Battle.net Launcher       |
@@ -110,11 +110,11 @@ This README provides an overview of the custom aliases and functions defined in 
 
 ## System Maintenance
 
-| Alias       | Command                 | Description                                  |
-| ----------- | ----------------------- | -------------------------------------------- |
-| `dism`      | `run-dism`              | Run DISM to restore health of the image      |
-| `sfc`       | `run-sfc`               | Run SFC to scan and repair system files      |
-| `chkdsk`    | `run-chkdsk`            | Run CHKDSK to check the disk for errors      |
-| `cleanmgr`  | `run-cleanmgr`          | Run Disk Cleanup utility                     |
-| `windowsupdate`| `run-windowsupdate`  | Check for Windows updates                    |
-| `signoutshutdown` | `signout-shutdown` | Sign out the current user and shut down the PC |
+| Alias       | Command              | Description                                  |
+| ----------- | -------------------- | -------------------------------------------- |
+| `dism`      | `run-dism`           | Run DISM to repair Windows image             |
+| `sfc`       | `run-sfc`            | Run System File Checker                      |
+| `chkdsk`    | `run-chkdsk`         | Run CHKDSK to check and repair disk errors   |
+| `cleanmgr`  | `run-cleanmgr`       | Run Disk Cleanup                             |
+| `windowsupdate` | `run-windowsupdate` | Check for Windows Updates                   |
+| `signoutshutdown` | `signout-shutdown` | Sign out and shut down the PC             |

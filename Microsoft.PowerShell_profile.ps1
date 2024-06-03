@@ -500,6 +500,22 @@ function signout-shutdown {
 # Alias for signing out and shutting down
 Set-Alias -Name signoutshutdown -Value signout-shutdown
 
+# Function to update Git
+function update-git {
+    if (Get-Command choco -ErrorAction SilentlyContinue) {
+        choco upgrade git -y
+    } elseif (Get-Command scoop -ErrorAction SilentlyContinue) {
+        scoop update git
+    } elseif (Get-Command winget -ErrorAction SilentlyContinue) {
+        winget upgrade --id Git.Git --accept-package-agreements
+    } else {
+        Write-Host "No supported package manager found (choco, scoop, or winget)." -ForegroundColor Red
+    }
+}
+
+# Alias for updating Git
+Set-Alias -Name gitupdate -Value update-git
+
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {
