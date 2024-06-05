@@ -577,6 +577,25 @@ function Kill-ProcessByPID {
 # Alias for the Kill-ProcessByPID function
 Set-Alias -Name kill -Value Kill-ProcessByPID
 
+# Function to find an available port
+function Get-AvailablePort {
+    param (
+        [int]$StartingPort = 1024,
+        [int]$EndingPort = 65535
+    )
+
+    for ($port = $StartingPort; $port -le $EndingPort; $port++) {
+        if (-not (netstat -an | Select-String -Pattern "TCP.*:$port\s")) {
+            Write-Output $port
+            return
+        }
+    }
+    Write-Error "No available ports found in the range $StartingPort to $EndingPort."
+}
+
+# Alias for the Get-AvailablePort function
+Set-Alias -Name GetAvailPort -Value Get-AvailablePort
+
 # Function to sign out the current user and shut down the PC
 function signout-shutdown {
     param (

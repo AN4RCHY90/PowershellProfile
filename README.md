@@ -72,6 +72,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | `Get-PubIP` | `Get-PubIP`              | Get the public IP address                      |
 | `grep`  | `grep <regex> [dir]`         | Search for a regex pattern in files            |
 | `hb`    | `hb <file>`                  | Upload the contents of a file to hastebin      |
+| `GetAvailPort` | `Get-AvailablePort [StartingPort] [EndingPort]` | Find an available port within the specified range |
 
 ## Clipboard Utilities
 
