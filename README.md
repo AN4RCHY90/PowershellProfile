@@ -13,6 +13,7 @@ This README provides an overview of the custom aliases and functions defined in 
 - [Enhanced PowerShell Experience](#enhanced-powershell-experience)
 - [Application Shortcuts](#application-shortcuts)
 - [System Maintenance](#system-maintenance)
+- [Process Utilities](#process-utilities)
 
 ## Navigation Shortcuts
 
@@ -116,3 +117,10 @@ This README provides an overview of the custom aliases and functions defined in 
 | `cleanmgr`  | `run-cleanmgr`       | Run Disk Cleanup                             |
 | `windowsupdate` | `run-windowsupdate` | Check for Windows Updates                   |
 | `signoutshutdown` | `signout-shutdown` | Sign out and shut down the PC             |
+
+## Process Utilities
+
+| Alias       | Command              | Description                                  |
+| ----------- | -------------------- | -------------------------------------------- |
+| `GetProcByPort` | `Get-ProcessByPort <Port>` | Find the PID and process name for a specified port number |
+| `kill`      | `Kill-ProcessByPID <PID>` | Kill a process by its PID                    |

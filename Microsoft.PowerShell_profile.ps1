@@ -528,6 +528,55 @@ function run-windowsupdate {
 # Alias for checking Windows Updates
 Set-Alias -Name windowsupdate -Value run-windowsupdate
 
+# Function to get the PID and process name for a given port number
+function Get-ProcessByPort {
+    param (
+        [int]$Port
+    )
+
+    # Get the PID associated with the port
+    $netstatOutput = netstat -ano | Select-String ":$Port\s"
+    if (-not $netstatOutput) {
+        Write-Host "No process found using port $Port" -ForegroundColor Red
+        return
+    }
+
+    # Extract the PID from the netstat output
+    $pid = ($netstatOutput -split "\s+")[-1]
+
+    # Get the process name using the PID
+    $process = Get-Process -Id $pid -ErrorAction SilentlyContinue
+    if ($process) {
+        [PSCustomObject]@{
+            Port       = $Port
+            PID        = $pid
+            ProcessName = $process.Name
+        } | Format-Table -AutoSize
+    } else {
+        Write-Host "No process found with PID $pid" -ForegroundColor Red
+    }
+}
+
+# Alias for the Get-ProcessByPort function
+Set-Alias -Name GetProcByPort -Value Get-ProcessByPort
+
+# Function to kill a process by PID
+function Kill-ProcessByPID {
+    param (
+        [int]$PID
+    )
+
+    try {
+        Stop-Process -Id $PID -Force -Confirm
+        Write-Host "Process with PID $PID has been terminated." -ForegroundColor Green
+    } catch {
+        Write-Host "Failed to terminate process with PID $PID. Error: $_" -ForegroundColor Red
+    }
+}
+
+# Alias for the Kill-ProcessByPID function
+Set-Alias -Name kill -Value Kill-ProcessByPID
+
 # Function to sign out the current user and shut down the PC
 function signout-shutdown {
     param (
