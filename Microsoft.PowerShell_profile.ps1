@@ -639,13 +639,29 @@ function Get-AvailablePort {
 # Alias for the Get-AvailablePort function
 Set-Alias -Name GetAvailPort -Value Get-AvailablePort
 
+# Function to check if the current session is running with elevated privileges
+function Test-IsAdmin {
+    $currentUser = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    return $currentUser.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
 # Function to sign out the current user and shut down the PC
 function signout-shutdown {
     param (
         [int]$delayMinutes = 1
     )
-    # Schedule shutdown task to run in the specified number of minutes
-    schtasks /create /tn "ShutdownPC" /tr "shutdown.exe /s /f /t 0" /sc once /st $(Get-Date).AddMinutes($delayMinutes).ToString("HH:mm")
+
+    if (-not (Test-IsAdmin)) {
+        Write-Host "This script must be run as an administrator. Please restart PowerShell with elevated privileges." -ForegroundColor Red
+        return
+    }
+
+    # Schedule a shutdown task to run after the specified number of minutes
+    $shutdownTime = (Get-Date).AddMinutes($delayMinutes).ToString("HH:mm")
+    $taskName = "ShutdownPC"
+
+    # Create the scheduled task
+    schtasks /create /tn $taskName /tr "shutdown.exe /s /f /t 0" /sc once /st $shutdownTime /f
 
     # Log off the current user
     shutdown.exe /l
