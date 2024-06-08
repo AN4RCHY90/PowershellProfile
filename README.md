@@ -2,6 +2,8 @@
 
 This README provides an overview of the custom aliases and functions defined in your PowerShell profile. These aliases are designed to enhance your productivity and simplify common tasks.
 
+**Note:** The original base script used was made by Chris Titus & his original script can be found [here](https://github.com/ChrisTitusTech/powershell-profile).
+
 ## Table of Contents
 
 - [Navigation Shortcuts](#navigation-shortcuts)
