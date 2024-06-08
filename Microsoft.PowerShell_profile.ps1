@@ -343,22 +343,45 @@ function open-brave {
 # Alias for opening Brave browser
 Set-Alias -Name brave -Value open-brave
 
-# Function to open Signal Messenger and suppress output
-function open-signal {
-    $outputFile = [System.IO.Path]::GetTempFileName()
-    $errorFile = [System.IO.Path]::GetTempFileName()
-    Start-Process "C:\Users\$env:USERNAME\AppData\Local\Programs\signal-desktop\Signal.exe" -NoNewWindow -RedirectStandardOutput $outputFile -RedirectStandardError $errorFile
+# Function to remove temporary files
+function Remove-TempFiles {
+    param (
+        [string]$outputFile,
+        [string]$errorFile
+    )
 
-    # Wait until the process finishes
-    Start-Sleep -Seconds 2
-
-    # Check if files are in use and wait if they are
-    while ((Test-Path $outputFile -and (Get-Item $outputFile).Length -eq 0) -or (Test-Path $errorFile -and (Get-Item $errorFile).Length -eq 0)) {
-        Start-Sleep -Seconds 1
+    # Wait until Signal process is no longer running
+    while (Get-Process -Name "Signal" -ErrorAction SilentlyContinue) {
+        Start-Sleep -Seconds 5
     }
 
+    Write-Host "Signal process has ended. Removing temporary files..." -ForegroundColor Yellow
+
     # Remove the temporary files
-    Remove-Item $outputFile, $errorFile -Force
+    while ($true) {
+        try {
+            Remove-Item $outputFile, $errorFile -Force
+            Write-Host "Temporary files removed." -ForegroundColor Green
+            break
+        } catch {
+            # Wait and try again if the files are in use
+            Start-Sleep -Seconds 5
+        }
+    }
+}
+
+# Function to open Signal Messenger and suppress output
+function open-signal {
+    $outputFile = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), [System.IO.Path]::GetRandomFileName())
+    $errorFile = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), [System.IO.Path]::GetRandomFileName())
+
+    Start-Process "C:\Users\$env:USERNAME\AppData\Local\Programs\signal-desktop\Signal.exe" -NoNewWindow -RedirectStandardOutput $outputFile -RedirectStandardError $errorFile
+
+    # Start a background job to clean up the temporary files
+    Start-Job -ScriptBlock {
+        param ($outputFile, $errorFile)
+        Remove-TempFiles -outputFile $outputFile -errorFile $errorFile
+    } -ArgumentList $outputFile, $errorFile | Out-Null
 }
 
 # Alias for opening Signal Messenger
