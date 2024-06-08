@@ -45,7 +45,15 @@ function Update-PowerShell {
 }
 Update-PowerShell
 
-Write-Host "Hello Dave, would you like to play a game" -ForegroundColor Red
+# Dynamic Welcome Message
+$username = $env:USERNAME
+if ($username -eq 'an4rc') {
+    Write-Host "Hello Dave, would you like to play a game" -ForegroundColor Red
+} elseif ($username -eq 'Work') {
+    Write-Host "Hello Dave, what are we working on today" -ForegroundColor Green
+} else {
+    Write-Host "Hello $username, welcome to PowerShell" -ForegroundColor Blue
+}
 
 # Admin Check and Prompt Customization
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
