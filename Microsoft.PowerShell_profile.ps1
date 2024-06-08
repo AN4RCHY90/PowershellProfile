@@ -347,15 +347,18 @@ Set-Alias -Name brave -Value open-brave
 function Remove-TempFiles {
     param (
         [string]$outputFile,
-        [string]$errorFile
+        [string]$errorFile,
+        [string[]]$processNames
     )
 
-    # Wait until Signal process is no longer running
-    while (Get-Process -Name "Signal" -ErrorAction SilentlyContinue) {
-        Start-Sleep -Seconds 5
+    # Wait until all specified processes are no longer running
+    foreach ($processName in $processNames) {
+        while (Get-Process -Name $processName -ErrorAction SilentlyContinue) {
+            Start-Sleep -Seconds 5
+        }
     }
 
-    Write-Host "Signal process has ended. Removing temporary files..." -ForegroundColor Yellow
+    Write-Host "Processes have ended. Removing temporary files..." -ForegroundColor Yellow
 
     # Remove the temporary files
     while ($true) {
@@ -380,7 +383,7 @@ function open-signal {
     # Start a background job to clean up the temporary files
     Start-Job -ScriptBlock {
         param ($outputFile, $errorFile)
-        Remove-TempFiles -outputFile $outputFile -errorFile $errorFile
+        Remove-TempFiles -outputFile $outputFile -errorFile $errorFile -processNames @("Signal")
     } -ArgumentList $outputFile, $errorFile | Out-Null
 }
 
@@ -488,9 +491,18 @@ function open-explorer {
 # Alias for opening Windows Explorer at the C:\ directory
 Set-Alias -Name explorer -Value open-explorer
 
-# Function to open Turtl
+# Function to open Turtl and suppress output
 function open-turtl {
-    Start-Process "C:\Program Files\Turtl\turtl.exe"
+    $outputFile = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), [System.IO.Path]::GetRandomFileName())
+    $errorFile = [System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), [System.IO.Path]::GetRandomFileName())
+
+    Start-Process "C:\Program Files\Turtl\turtl.exe" -NoNewWindow -RedirectStandardOutput $outputFile -RedirectStandardError $errorFile
+
+    # Start a background job to clean up the temporary files
+    Start-Job -ScriptBlock {
+        param ($outputFile, $errorFile)
+        Remove-TempFiles -outputFile $outputFile -errorFile $errorFile -processNames @("Turtl")
+    } -ArgumentList $outputFile, $errorFile | Out-Null
 }
 
 # Alias for opening Turtl
