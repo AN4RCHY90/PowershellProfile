@@ -91,6 +91,27 @@ function ff($name) {
     }
 }
 
+# Ensure PSReadLine module is imported
+if (-not (Get-Module -ListAvailable -Name PSReadLine)) {
+    Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
+}
+Import-Module -Name PSReadLine
+
+# Enable Predictive IntelliSense
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadLineOption -PredictionViewStyle ListView
+
+# Set the maximum number of history items
+Set-PSReadLineOption -MaximumHistoryCount 4096
+
+# Set the location to save the history
+$historyFile = "$env:USERPROFILE\Documents\PowerShell_history.txt"
+Set-PSReadLineOption -HistorySavePath $historyFile
+
+# Optionally, set some key bindings for navigating history
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
 # Network Utilities
 function Get-PubIP { (Invoke-WebRequest http://ifconfig.me/ip).Content }
 

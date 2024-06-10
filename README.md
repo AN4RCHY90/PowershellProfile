@@ -85,9 +85,15 @@ This README provides an overview of the custom aliases and functions defined in 
 
 ## Enhanced PowerShell Experience
 
+## Enhanced PowerShell Experience
+
 | Command | Description                              |
 | ------- | ---------------------------------------- |
 | `Set-PSReadLineOption -Colors @{ ... }` | Set custom colors for the PowerShell prompt |
+| `Set-PSReadLineOption -PredictionSource HistoryAndPlugin` | Enable predictive IntelliSense based on history and plugins |
+| `Set-PSReadLineOption -PredictionViewStyle ListView` | Display predictive IntelliSense suggestions in a list view |
+| `Set-PSReadLineOption -MaximumHistoryCount 4096` | Set the maximum number of commands to save in the history |
+| `Set-PSReadLineOption -HistorySavePath $historyFile` | Specify the path where the history file should be saved |
 
 ## Application Shortcuts
 
@@ -127,4 +133,4 @@ This README provides an overview of the custom aliases and functions defined in 
 | ----------- | -------------------- | -------------------------------------------- |
 | `GetProcByPort` | `Get-ProcessByPort <Port>` | Find the PID and process name for a specified port number |
 | `kill`      | `Kill-ProcessByPID <PID>` | Kill a process by its PID                    |
-| 'signout'   | 'signout-user'       | Sign out the current User                    | 
+| `signout`   | `signout-user`       | Sign out the current user                    |
