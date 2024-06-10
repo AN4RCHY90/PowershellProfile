@@ -670,6 +670,14 @@ function signout-shutdown {
 # Alias for signing out and shutting down
 Set-Alias -Name signoutshutdown -Value signout-shutdown
 
+# Function to sign out the current user
+function signout-user {
+    shutdown.exe /l
+}
+
+# Alias for signing out the current user
+Set-Alias -Name signout -Value signout-user
+
 ## Final Line to set prompt
 oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/cobalt2.omp.json | Invoke-Expression
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {

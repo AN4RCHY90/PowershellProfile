@@ -127,3 +127,4 @@ This README provides an overview of the custom aliases and functions defined in 
 | ----------- | -------------------- | -------------------------------------------- |
 | `GetProcByPort` | `Get-ProcessByPort <Port>` | Find the PID and process name for a specified port number |
 | `kill`      | `Kill-ProcessByPID <PID>` | Kill a process by its PID                    |
+| 'signout'   | 'signout-user'       | Sign out the current User                    | 
