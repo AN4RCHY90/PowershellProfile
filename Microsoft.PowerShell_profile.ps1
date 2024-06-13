@@ -545,6 +545,14 @@ function open-parsec {
 # Alias for opening Parsec
 Set-Alias -Name parsec -Value open-parsec
 
+# Function to open Notepad++
+function open-notepad++ {
+    Start-Process "C:\Program Files\Notepad++\notepad++.exe"
+}
+
+# Alias for opening Notepad++
+Set-Alias -Name notepad -Value open-notepad++
+
 # Function to run DISM
 function run-dism {
     Start-Process "dism.exe" "/online /cleanup-image /restorehealth" -NoNewWindow -Wait
