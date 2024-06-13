@@ -116,6 +116,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | `turtl`   | `open-turtl`    | Open Turtl                       |
 | `parsec`  | `open-parsec`   | Open Parsec                      |
 | `notepad`  | `open-notepad++`   | Open Notepad++                      |
+| `postman`  | `open-postman`   | Open Postman                      |
 
 ## System Maintenance
 

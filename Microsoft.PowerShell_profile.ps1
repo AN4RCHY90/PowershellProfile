@@ -553,6 +553,14 @@ function open-notepad++ {
 # Alias for opening Notepad++
 Set-Alias -Name notepad -Value open-notepad++
 
+# Function to open Postman
+function open-postman {
+    Start-Process "C:\Users\$env:USERNAME\AppData\Local\Postman\Postman.exe"
+}
+
+# Alias for opening Postman
+Set-Alias -Name postman -Value open-postman
+
 # Function to run DISM
 function run-dism {
     Start-Process "dism.exe" "/online /cleanup-image /restorehealth" -NoNewWindow -Wait
