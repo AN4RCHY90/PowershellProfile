@@ -676,6 +676,14 @@ function Get-AvailablePort {
 # Alias for the Get-AvailablePort function
 Set-Alias -Name GetAvailPort -Value Get-AvailablePort
 
+# Function to shut down the PC
+function shutdown-pc {
+    shutdown.exe /s /f /t 0
+}
+
+# Alias for shutting down the PC
+Set-Alias -Name shutdown -Value shutdown-pc
+
 # Function to check if the current session is running with elevated privileges
 function Test-IsAdmin {
     $currentUser = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
