@@ -561,6 +561,14 @@ function open-postman {
 # Alias for opening Postman
 Set-Alias -Name postman -Value open-postman
 
+# Function to open Tor browser
+function open-tor {
+    Start-Process "C:\Users\Work\OneDrive - Commtel Ltd T A Telguard\Desktop\Tor Browser\Browser\firefox.exe"
+}
+
+# Alias for opening tor browser
+Set-Alias -Name tor -Value open-tor
+
 # Function to run DISM
 function run-dism {
     Start-Process "dism.exe" "/online /cleanup-image /restorehealth" -NoNewWindow -Wait
@@ -622,18 +630,18 @@ function Get-ProcessByPort {
     }
 
     # Extract the PID from the netstat output
-    $pid = ($netstatOutput -split "\s+")[-1]
+    $processId = ($netstatOutput -split "\s+")[-1]
 
     # Get the process name using the PID
-    $process = Get-Process -Id $pid -ErrorAction SilentlyContinue
+    $process = Get-Process -Id $processId -ErrorAction SilentlyContinue
     if ($process) {
         [PSCustomObject]@{
             Port       = $Port
-            PID        = $pid
+            PID        = $processId
             ProcessName = $process.Name
         } | Format-Table -AutoSize
     } else {
-        Write-Host "No process found with PID $pid" -ForegroundColor Red
+        Write-Host "No process found with PID $processId" -ForegroundColor Red
     }
 }
 
@@ -643,14 +651,14 @@ Set-Alias -Name GetProcByPort -Value Get-ProcessByPort
 # Function to kill a process by PID
 function Kill-ProcessByPID {
     param (
-        [int]$PID
+        [int]$ProcessId
     )
 
     try {
-        Stop-Process -Id $PID -Force -Confirm
-        Write-Host "Process with PID $PID has been terminated." -ForegroundColor Green
+        Stop-Process -Id $ProcessId -Force -Confirm
+        Write-Host "Process with PID $ProcessId has been terminated." -ForegroundColor Green
     } catch {
-        Write-Host "Failed to terminate process with PID $PID. Error: $_" -ForegroundColor Red
+        Write-Host "Failed to terminate process with PID $ProcessId. Error: $_" -ForegroundColor Red
     }
 }
 
