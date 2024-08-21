@@ -117,6 +117,7 @@ This README provides an overview of the custom aliases and functions defined in 
 | `parsec`  | `open-parsec`   | Open Parsec                      |
 | `notepad`  | `open-notepad++`   | Open Notepad++                      |
 | `postman`  | `open-postman`   | Open Postman                      |
+| `kleo`  | `open-kleopatra`   | Open Kleopatra                      |
 
 ## System Maintenance
 

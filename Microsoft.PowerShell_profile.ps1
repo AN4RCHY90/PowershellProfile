@@ -1,5 +1,5 @@
 ### PowerShell Profile Refactor
-### Version 1.1.03 - Refactored
+### Version 1.1.04 - Refactored
 
 # Initial GitHub.com connectivity check with 1 second timeout
 $canConnectToGitHub = Test-Connection github.com -Count 1 -Quiet -TimeoutSeconds 1
@@ -568,6 +568,21 @@ function open-tor {
 
 # Alias for opening tor browser
 Set-Alias -Name tor -Value open-tor
+
+# Function to open Kleopatra
+function open-kleopatra {
+    Start-Process "C:\Program Files (x86)\Gpg4win\bin\kelopatra.exe"
+}
+
+# Alias for opening kleopatra
+Set-Alias -Name kleo -Value open-kleopatra
+
+# Function to open Docker Desktop
+function open-docker {
+    Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+}
+
+Set-Alias -Name docker -Value open-docker
 
 # Function to run DISM
 function run-dism {
