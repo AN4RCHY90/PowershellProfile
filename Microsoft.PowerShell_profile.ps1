@@ -461,7 +461,7 @@ Set-Alias -Name ubisoft -Value open-ubisoft
 
 # Function to open EA app
 function open-ea {
-    Start-Process "C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EA Desktop.exe"
+    Start-Process "C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EADesktop.exe"
 }
 
 # Alias for opening EA app
@@ -760,3 +760,8 @@ if (Get-Command zoxide -ErrorAction SilentlyContinue) {
         Write-Error "Failed to install zoxide. Error: $_"
     }
 }
+
+#f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
+
+Import-Module -Name Microsoft.WinGet.CommandNotFound
+#f45873b3-b655-43a6-b217-97c00aa0db58
