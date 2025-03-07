@@ -372,6 +372,14 @@ function open-brave {
 # Alias for opening Brave browser
 Set-Alias -Name brave -Value open-brave
 
+# Function to open/run Proton VPN
+function open-proton {
+    Start-Process "C:\Program Files\Proton\VPN\ProtonVPN.Launcher.exe"
+}
+
+# Alias for Proton VPN
+Set-Alias -Name proton -Value open-proton
+
 # Function to remove temporary files
 function Remove-TempFiles {
     param (
