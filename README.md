@@ -85,8 +85,6 @@ This README provides an overview of the custom aliases and functions defined in 
 
 ## Enhanced PowerShell Experience
 
-## Enhanced PowerShell Experience
-
 | Command                                                   | Description                                                 |
 | --------------------------------------------------------- | ----------------------------------------------------------- |
 | `Set-PSReadLineOption -Colors @{ ... }`                   | Set custom colors for the PowerShell prompt                 |
