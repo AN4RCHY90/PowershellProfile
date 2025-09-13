@@ -118,6 +118,8 @@ This README provides an overview of the custom aliases and functions defined in 
 | `notepad`  | `open-notepad++`   | Open Notepad++                      |
 | `postman`  | `open-postman`   | Open Postman                      |
 | `kleo`  | `open-kleopatra`   | Open Kleopatra                      |
+| `proton` | `open-proton` | Open Proton VPN |
+| `rider` | `open-rider` | Open Rider IDE |
 
 ## System Maintenance
 
