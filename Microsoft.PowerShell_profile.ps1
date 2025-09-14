@@ -59,13 +59,8 @@ function Test-CommandExists {
 }
 
 # Editor Configuration
-$EDITOR = if (Test-CommandExists nvim) { 'nvim' }
-          elseif (Test-CommandExists pvim) { 'pvim' }
-          elseif (Test-CommandExists vim) { 'vim' }
-          elseif (Test-CommandExists vi) { 'vi' }
-          elseif (Test-CommandExists code) { 'code' }
+$EDITOR = if (Test-CommandExists code) { 'code' }
           elseif (Test-CommandExists notepad++) { 'notepad++' }
-          elseif (Test-CommandExists sublime_text) { 'sublime_text' }
           else { 'notepad' }
 Set-Alias -Name vim -Value $EDITOR
 
@@ -88,7 +83,7 @@ Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -PredictionViewStyle ListView
 
 # Set the maximum number of history items
-Set-PSReadLineOption -MaximumHistoryCount 4096
+Set-PSReadLineOption -MaximumHistoryCount 50
 
 # Set the location to save the history
 $historyFile = "$env:USERPROFILE\Documents\PowerShell_history.txt"
