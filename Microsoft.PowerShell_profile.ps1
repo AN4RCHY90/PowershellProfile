@@ -263,7 +263,7 @@ Set-Alias -Name ubisoft -Value open-ubisoft
 function open-ea { Start-Process "C:\Program Files\Electronic Arts\EA Desktop\EA Desktop\EADesktop.exe" }
 Set-Alias -Name ea -Value open-ea
 
-function open-epic { Start-Process "C:\Program Files (x86)\Epic Games\Launcher\Portal\Binaries\Win32\EpicGamesLauncher.exe" }
+function open-epic { Start-Process "C:\Program Files (x86)\Epic Games\Launcher\Portal\Binaries\Win64\EpicGamesLauncher.exe" }
 Set-Alias -Name epic -Value open-epic
 
 function open-discord { Start-Process "C:\ProgramData\SquirrelMachineInstalls\Discord.exe" }
